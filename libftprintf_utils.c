@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:21:36 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/25 17:13:37 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/25 17:43:43 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,13 +80,16 @@ char	*ft_itoa_base(int value, int base)
 	return (str);
 }
 
-char	ft_str_toupper(char *c)
+char	*ft_str_toupper(char *c)
 {
-	while (*c)
+	int	i;
+
+	i = 0;
+	while (c[i])
 	{
-		if (*c >= 'a' && *c <= 'z')
-			*c -= 32;
-		*c++;
+		if (c[i] >= 'a' && c[i] <= 'z')
+			c[i] -= 32;
+		i++;
 	}
 	return (c);
 }

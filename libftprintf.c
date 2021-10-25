@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:06:54 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/25 17:16:19 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/25 17:57:56 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	print_var(const char * to_print, va_list args, int i)
 {
-	char *str; // temp
-
 	if (to_print[i+1] == 's' /*|| to_print[i + 1] == 'c'*/)
 		ft_putstr((char *)va_arg(args, const char *));
 	else if (to_print[i+1] == 'c')
@@ -27,11 +25,7 @@ void	print_var(const char * to_print, va_list args, int i)
 	else if (to_print[i+1] == 'x')
 		ft_putstr(ft_itoa_base(va_arg(args, int), 16));
 	else if (to_print[i+1] == 'X')
-		str = ft_itoa_base(va_arg(args, int), 16);
-		printf("%s", str);
-		str = ft_str_toupper(str);
-		printf("%s", str);
-		ft_putstr(str);
+		ft_putstr(ft_str_toupper(ft_itoa_base(va_arg(args, int), 16)));
 }
 
 int	ft_printf(const char *to_print, ...)
@@ -61,19 +55,17 @@ int	ft_printf(const char *to_print, ...)
 int main()
 {
 	const char	*text;
-	const char	*text2;
 	const char	*lettre;
 	int			nombre;
 	int			nombre2;
-	int			nombre3;
+	unsigned int			nombre3;
 
 	text = "ft_tagueule";
-	text2 = "PasGentil";
 	lettre = "c";
 	nombre = 42;
 	nombre2 = 43;
-	nombre3 = 42;
+	nombre3 = 4000000000;
 
-	ft_printf("Result: %s + %s + %c + %d + %i + %x + %X +  %%\n", text, text2, lettre, nombre, nombre2, nombre3, nombre3);
-	printf("Real: x = %x | X = %X", nombre3, nombre3);
+	ft_printf("Result: %s + %c + %d + %i + %x + %X + %%\n", text, lettre, nombre, nombre2, nombre3, nombre3);
+	printf("Real: %x + %X", nombre3, nombre3);
 }
