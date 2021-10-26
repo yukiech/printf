@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 11:21:36 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/26 11:22:45 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/26 18:31:12 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@ void	ft_putstr(char *s)
 	int	i;
 
 	i = 0;
+	//if (!s)
+	//	return ;
 	if (!s)
+	{
+		write(1, "(null)", 6);
+		count += 6;
 		return ;
+	}
 	while (s[i])
 	{
 		ft_putchar_count(s[i]);
@@ -35,7 +41,7 @@ void	ft_putnbr(int n)
 	if (n == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		count++;
+		count += 11;
 		return ;
 	}
 	if (n < 0)
@@ -80,6 +86,7 @@ char	*ft_itoa_base(int value, int base)
 		value /= base;
 		i--;
 	}
+	free(str);
 	return (str);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:12:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/26 11:49:25 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/26 18:28:31 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stdarg.h>
+# include <limits.h>
 
 extern int	count;
 

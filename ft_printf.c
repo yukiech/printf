@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:06:54 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/26 11:32:31 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/26 18:26:34 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	print_var(const char * to_print, va_list args, int i)
 {
-	if (to_print[i+1] == 's' /*|| to_print[i + 1] == 'c'*/)
+	if (to_print[i+1] == 's')
 		ft_putstr((char *)va_arg(args, const char *));
 	else if (to_print[i+1] == 'c')
-		ft_putchar_count((char)va_arg(args, const char *));
+		ft_putchar_count((int)va_arg(args, int));
 	else if (to_print[i+1] == 'i' || to_print[i+1] == 'd')
 		ft_putnbr((int)va_arg(args, int));
 	else if (to_print[i+1] == '%')
@@ -26,6 +26,8 @@ void	print_var(const char * to_print, va_list args, int i)
 		ft_putstr(ft_itoa_base(va_arg(args, int), 16));
 	else if (to_print[i+1] == 'X')
 		ft_putstr(ft_str_toupper(ft_itoa_base(va_arg(args, int), 16)));
+	else if (to_print[i+1] == 'u')
+		ft_putnbr((unsigned int)va_arg(args, unsigned int));
 }
 
 int	ft_printf(const char *to_print, ...)
@@ -49,7 +51,7 @@ int	ft_printf(const char *to_print, ...)
 		i++;
 	}
 	va_end(args);
-	return (0);
+	return (count);
 }
 
 /*int main()
@@ -68,9 +70,13 @@ int	ft_printf(const char *to_print, ...)
 	nombre3 = 42;
 	printfc = 0;
 
-	ft_printf("Result: %s + %c + %d + %i + %x + %X + %%\n", text, lettre, nombre, nombre2, nombre3, nombre3);
-	printfc = printf("Result: %s + %s + %d + %i + %x + %X + %%\n", text, lettre, nombre, nombre2, nombre3, nombre3);
-	printf("N lettre: %d\n", count);
-	printf("N lettre: %d\n", printfc);
+	ft_printf("%u - %u - %u - %u - %u - %u - %u - %u - %u - %u\n", -1, -9, -10, -11, -14, -15, -16, -99, -100, -101);
+	printf("%u - %u - %u - %u - %u - %u - %u - %u - %u - %u\n", -1, -9, -10, -11, -14, -15, -16, -99, -100, -101);
+
+
+	//ft_printf("Result: %s + %s + %c + %d + %i + %x + %X + %%\n", NULL, text, lettre, nombre, nombre2, nombre3, nombre3);
+	//printfc = printf("Printf: %s + %s + %s + %d + %i + %x + %X + %%\n", NULL, text, lettre, nombre, nombre2, nombre3, nombre3);
+	//printf("N lettre: %d\n", count);
+	//printf("Printf: %d\n", printfc);
 	//	printf("Real: %x + %X", nombre3, nombre3);
 }*/
