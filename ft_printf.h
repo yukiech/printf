@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:12:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/26 18:28:31 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/27 15:24:36 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,15 @@
 # include <stdarg.h>
 # include <limits.h>
 
-extern int	count;
+extern int	g_count;
 
-int ft_printf(const char *to_print, ...);
+int		ft_printf(const char *to_print, ...);
 void	ft_putstr(char *s);
-void    ft_putnbr(int n);
-char	*ft_itoa_base(int value, int base);
+void	ft_putnbr(int n);
+void	ft_putnbr_long(long int n);
+char	*ft_itoa_base(unsigned long int value, unsigned long int base);
+char	*ft_itoa_base_x(unsigned int value, unsigned int base);
 char	*ft_str_toupper(char *c);
-void    ft_putchar_count(char c);
+void	ft_putchar_count(char c);
 
 #endif
