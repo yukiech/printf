@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:06:54 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/27 15:22:47 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/27 15:34:18 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	ft_printf(const char *to_print, ...)
 		i++;
 	}
 	va_end(args);
-	return (count);
+	return (g_count);
 }
 
 /*int main()
