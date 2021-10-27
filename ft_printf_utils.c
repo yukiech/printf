@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:14:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/27 15:32:02 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/27 15:45:47 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ char	*ft_itoa_base(unsigned long int value, unsigned long int base)
 		tmp = tmp / base;
 		i++;
 	}
-	str = (char *)malloc(sizeof(char) * (i + 2));
-	if (str)
+	str = malloc(sizeof(char) * (i + 2));
+	if (!str)
 		return (NULL);
 	str[i + 1] = '\0';
 	while (i >= 0)
@@ -103,7 +103,7 @@ char	*ft_itoa_base_x(unsigned int value, unsigned int base)
 		i++;
 	}
 	str = (char *)malloc(sizeof(char) * (i + 1));
-	if (str)
+	if (!str)
 		return (NULL);
 	str[i + 1] = '\0';
 	while (i >= 0)
