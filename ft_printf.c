@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/25 09:06:54 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/28 11:49:19 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/28 12:56:43 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,24 @@
 void	print_var(const char *to_print, va_list args, int i, int *count)
 {
 	if (to_print[i + 1] == 's')
-		ft_putstr((char *)va_arg(args, const char *), count);
+		ft_putstr_printf((char *)va_arg(args, const char *), count);
+
 	else if (to_print[i + 1] == 'c')
 		ft_putchar_count((int)va_arg(args, int), count);
 	else if (to_print[i + 1] == 'i' || to_print[i + 1] == 'd')
-		ft_putnbr((int)va_arg(args, int), count);
+		ft_putnbr_printf((int)va_arg(args, int), count);
 	else if (to_print[i + 1] == '%')
 		ft_putchar_count('%', count);
 	else if (to_print[i + 1] == 'x')
-		ft_putstr(ft_itoa_base_x(va_arg(args, int), 16), count);
+		ft_putstr_printf(ft_itoa_base_x_printf(va_arg(args, int), 16), count);
 	else if (to_print[i + 1] == 'X')
-		ft_putstr(ft_str_toupper(ft_itoa_base_x(va_arg(args, int), 16)), count);
+		ft_putstr_printf(ft_str_toupper(ft_itoa_base_x_printf(va_arg(args, int), 16)), count);
 	else if (to_print[i + 1] == 'u')
 		ft_putnbr_long((unsigned int)va_arg(args, unsigned int), count);
 	else if (to_print[i + 1] == 'p')
 	{
-		ft_putstr("0x", count);
-		ft_putstr(ft_itoa_base((unsigned long int)va_arg(args, void *),
+		ft_putstr_printf("0x", count);
+		ft_putstr_printf(ft_itoa_base_printf((unsigned long int)va_arg(args, void *),
 				16), count);
 	}
 }

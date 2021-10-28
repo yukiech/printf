@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 10:48:44 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/28 10:11:42 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/28 12:51:26 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_putnbr_long(long int n, int *count)
 		n = LONG_MAX - n;
 	}
 	if (n >= 10)
-		ft_putnbr(n / 10, count);
+		ft_putnbr_long(n / 10, count);
 	c = n % 10 + '0';
 	ft_putchar_count(c, count);
 }
