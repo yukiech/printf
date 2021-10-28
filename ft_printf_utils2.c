@@ -6,21 +6,19 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 10:48:44 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/27 15:32:12 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/28 10:11:42 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	g_count;
-
-void	ft_putchar_count(char c)
+void	ft_putchar_count(char c, int *count)
 {
 	write(1, &c, 1);
-	g_count++;
+	*count = *count + 1;
 }
 
-void	ft_putnbr_long(long int n)
+void	ft_putnbr_long(long int n, int *count)
 {
 	char	c;
 
@@ -29,9 +27,9 @@ void	ft_putnbr_long(long int n)
 		n = LONG_MAX - n;
 	}
 	if (n >= 10)
-		ft_putnbr(n / 10);
+		ft_putnbr(n / 10, count);
 	c = n % 10 + '0';
-	ft_putchar_count(c);
+	ft_putchar_count(c, count);
 }
 
 char	*ft_str_toupper(char *c)

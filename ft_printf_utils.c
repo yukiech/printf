@@ -6,15 +6,13 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:14:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/27 15:45:47 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/28 11:01:17 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	g_count;
-
-void	ft_putstr(char *s)
+void	ft_putstr(char *s, int *count)
 {
 	int	i;
 
@@ -22,35 +20,35 @@ void	ft_putstr(char *s)
 	if (!s)
 	{
 		write(1, "(null)", 6);
-		g_count += 6;
+		*count = *count + 6;
 		return ;
 	}
 	while (s[i])
 	{
-		ft_putchar_count(s[i]);
+		ft_putchar_count(s[i], count);
 		i++;
 	}
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, int *count)
 {
 	char	c;
 
 	if (n == -2147483648)
 	{
 		write(1, "-2147483648", 11);
-		g_count += 11;
+		*count = *count + 11;
 		return ;
 	}
 	if (n < 0)
 	{
-		ft_putchar_count('-');
+		ft_putchar_count('-', count);
 		n = -n;
 	}
 	if (n >= 10)
-		ft_putnbr(n / 10);
+		ft_putnbr(n / 10, count);
 	c = n % 10 + '0';
-	ft_putchar_count(c);
+	ft_putchar_count(c, count);
 }
 
 static int	convert_base(int nb)
