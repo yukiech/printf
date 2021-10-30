@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 10:48:44 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/28 12:51:26 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/10/30 07:51:29 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_putnbr_long(long int n, int *count)
 	ft_putchar_count(c, count);
 }
 
-char	*ft_str_toupper(char *c)
+char	*ft_str_toup(char *c)
 {
 	int	i;
 
