@@ -6,7 +6,7 @@
 /*   By: ahuber <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/27 15:14:35 by ahuber            #+#    #+#             */
-/*   Updated: 2021/10/30 07:51:11 by ahuber           ###   ########.fr       */
+/*   Updated: 2021/11/01 11:01:31 by ahuber           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,11 @@ static int	convert_base(int nb)
 		return (nb + '0');
 }
 
-char	*ft_itoa_base_p(unsigned long int value, unsigned long int base)
+char	*ft_itoa_base_p(unsigned long int value, unsigned long int base,
+			char **str)
 {
 	int					i;
 	unsigned long int	tmp;
-	char				*str;
 
 	i = 0;
 	tmp = value;
@@ -72,26 +72,24 @@ char	*ft_itoa_base_p(unsigned long int value, unsigned long int base)
 		tmp = tmp / base;
 		i++;
 	}
-	str = malloc(sizeof(char) * (i + 2));
+	*str = malloc(sizeof(char) * (i + 2));
 	if (!str)
 		return (NULL);
-	str[i + 1] = '\0';
+	(*str)[i + 1] = '\0';
 	while (i >= 0)
 	{
 		tmp = value % base;
-		str[i] = convert_base(tmp);
+		(*str)[i] = convert_base(tmp);
 		value /= base;
 		i--;
 	}
-	free(str);
-	return (str);
+	return (*str);
 }
 
-char	*ft_itoa_base_x(unsigned int value, unsigned int base)
+char	*ft_itoa_base_x(unsigned int value, unsigned int base, char **str)
 {
 	int					i;
 	unsigned long int	tmp;
-	char				*str;
 
 	i = 0;
 	tmp = value;
@@ -100,17 +98,16 @@ char	*ft_itoa_base_x(unsigned int value, unsigned int base)
 		tmp = tmp / base;
 		i++;
 	}
-	str = (char *)malloc(sizeof(char) * (i + 1));
+	*str = (char *)malloc(sizeof(char) * (i + 1));
 	if (!str)
 		return (NULL);
-	str[i + 1] = '\0';
+	(*str)[i + 1] = '\0';
 	while (i >= 0)
 	{
 		tmp = value % base;
-		str[i] = convert_base(tmp);
+		(*str)[i] = convert_base(tmp);
 		value /= base;
 		i--;
 	}
-	free(str);
-	return (str);
+	return (*str);
 }
